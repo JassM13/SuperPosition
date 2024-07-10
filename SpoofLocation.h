@@ -1,11 +1,11 @@
+#import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface SpoofLocation : NSObject <CLLocationManagerDelegate>
+@interface SpoofLocation : NSObject
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, assign) CLLocationCoordinate2D spoofedCoordinate;
 
 + (instancetype)sharedInstance;
-- (CLLocationCoordinate2D)currentLocation;
 - (void)updateLocationWithX:(CGFloat)x y:(CGFloat)y;
 
 @end

@@ -5,7 +5,7 @@
 @end
 
 @interface JoystickView : UIView
-@property (nonatomic, unsafe_unretained) id<JoystickDelegate> delegate;
-+ (instancetype)sharedInstance;
-- (void)toggleJoystick;
+
+@property (nonatomic, weak) id<JoystickDelegate> delegate;
+
 @end
