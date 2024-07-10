@@ -8,4 +8,6 @@
 
 @property (nonatomic, weak) id<JoystickDelegate> delegate;
 
+- (void)setCustomPosition:(CGPoint)position;
+
 @end

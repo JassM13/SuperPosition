@@ -8,6 +8,7 @@
 @property (nonatomic, strong) UITextField *manualLonField;
 @property (nonatomic, strong) JoystickView *joystickView;
 @property (nonatomic, assign) BOOL isPopupVisible;
+@property (nonatomic, assign) CGPoint currentLocation;
 @end
 
 @implementation PopupViewController
@@ -72,6 +73,8 @@
     self.joystickView.hidden = YES;
     self.joystickView.delegate = self;
     [self.view addSubview:self.joystickView];
+
+    self.currentLocation = CGPointZero;
 }
 
 - (void)togglePopup {
@@ -145,11 +148,19 @@
 - (void)setLocation {
     CGFloat lat = [self.manualLatField.text floatValue];
     CGFloat lon = [self.manualLonField.text floatValue];
+    self.currentLocation = CGPointMake(lat, lon);
+    [self.joystickView setCustomPosition:CGPointMake(0, 0)]; 
     [[SpoofLocation sharedInstance] updateLocationWithX:lat y:lon];
 }
 
 - (void)joystickDidUpdateWithX:(CGFloat)x y:(CGFloat)y {
-    [[SpoofLocation sharedInstance] updateLocationWithX:x y:y];
+    CGFloat speedFactor = 0.0001; 
+    CGFloat dx = x * speedFactor;
+    CGFloat dy = -y * speedFactor;
+    
+    self.currentLocation = CGPointMake(self.currentLocation.x + dx, self.currentLocation.y + dy);
+    
+    [[SpoofLocation sharedInstance] updateLocationWithX:self.currentLocation.x y:self.currentLocation.y];
 }
 
 @end
