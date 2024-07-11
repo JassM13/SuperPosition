@@ -1,7 +1,7 @@
 # SuperPosition
 
 ## Overview
-**SuperPosition** is a powerful tool for iOS applications that allows users to change their location to anywhere within the world. This injectable is perfect for developers needing to test location-based features, simulate various geographic scenarios, or enhance app functionality or just to exploit around games.
+**SuperPosition** is a tool for iOS applications that allows users to change their location to anywhere within the world. This injectable is perfect for people to exploit around games or whatever.
 
 ## Features
 - **Change Location:** Instantly set your location to any coordinates within any app.
